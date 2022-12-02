@@ -1,51 +1,15 @@
 // import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { LoginForm } from './components/LoginForm';
 
 export default function App() {
-  const [inputUser, setInputUser] = useState('')
-  const [user, setUser] = useState('')
-
-  function handleLogin() {
-    setUser(inputUser)
-    console.log('pressed')
-    console.log(inputUser)
-  }
-
   return (
     <View style={styles.container}>
       {/* <StatusBar style="auto" /> */}
       <Text style={styles.heading}>Entre no sistema</Text>
 
-      <View style={styles.inputGroup}>
-        <View style={styles.input}>
-          <TextInput
-            style={styles.textInput} 
-            placeholder='Seu usuário'
-            value={inputUser}
-            onChangeText={(text) => setInputUser(text)}
-            testID='user-input'
-          />
-        </View>
-        <View style={styles.input}>
-          <TextInput
-            style={styles.textInput} 
-            placeholder='Sua senha' 
-            secureTextEntry={true}
-            testID='password-input'
-          />
-        </View>
-      </View>
-
-      <TouchableOpacity 
-        style={styles.button} 
-        onPress={handleLogin}
-        testID='login-button'
-      >
-        <Text style={styles.buttonText}>Entrar</Text>
-      </TouchableOpacity>
-
-      <Text style={styles.userGreet}>{user && `Olá ${user}`}</Text>
+      <LoginForm />     
     </View>
   );
 }
